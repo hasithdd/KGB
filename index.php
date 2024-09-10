@@ -10,7 +10,7 @@
 
 <body>
     <nav>
-        <a href="index.html" class="logo">KGB</a>
+        <a href="index.php" class="logo">KGB</a>
     </nav>
 
     <header>
@@ -18,7 +18,7 @@
             <h1>Let's Buy Some <span>Missiles</span></h1>
             <p>Ideas are more powerful than guns. We would not let our enemies have guns, why should we let them have ideas - Joseph Stalin
             </p>
-            <a href="login-page.html">
+            <a href="login-page.php">
                 <i class='bx bx-basket'></i>
                 <span>Login</span>
             </a>
