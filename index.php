@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="homepage-style.css">
+    <link rel="stylesheet" href="css/homepage-style.css">
     <title>KGB Weapons Stock</title>
 </head>
 
@@ -23,7 +23,7 @@
                 <span>Login</span>
             </a>
         </div>
-        <img src="home-images/header.png">
+        <img src="res/img/home-images/header.png">
     </header>
 
     <h2 class="separator">
@@ -62,7 +62,7 @@
 
         <div class="nft-list">
             <div class="item">
-                <img src="home-images/item-1.png">
+                <img src="res/img/home-images/item-1.png">
                 <div class="info">
                     <div>
                         <h5>Nuclear Missile</h5>
@@ -75,7 +75,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="home-images/item-2.png">
+                <img src="res/img/home-images/item-2.png">
                 <div class="info">
                     <div>
                         <h5>SU-35</h5>
@@ -88,7 +88,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="home-images/item-3.png">
+                <img src="res/img/home-images/item-3.png">
                 <div class="info">
                     <div>
                         <h5>TypHoon</h5>
@@ -101,7 +101,7 @@
                 </div>
             </div>
             <div class="item">
-                <img src="home-images/item-4.png">
+                <img src="res/img/home-images/item-4.png">
                 <div class="info">
                     <div>
                         <h5>T-90</h5>
@@ -123,28 +123,28 @@
 
     <div class="sellers">
         <div class="item">
-            <img src="home-images/profile-1.png">
+            <img src="res/img/home-images/profile-1.png">
             <div class="info">
                 <h4>Joseph Stalin</h4>
                 <p>1B RUB</p>
             </div>
         </div>
         <div class="item">
-            <img src="home-images/profile-2.png">
+            <img src="res/img/home-images/profile-2.png">
             <div class="info">
                 <h4>V. Lenin</h4>
                 <p>250M RUB</p>
             </div>
         </div>
         <div class="item">
-            <img src="home-images/profile-3.png">
+            <img src="res/img/home-images/profile-3.png">
             <div class="info">
                 <h4>V. Putin</h4>
                 <p>75B RUB</p>
             </div>
         </div>
         <div class="item">
-            <img src="home-images/profile-4.png">
+            <img src="res/img/home-images/profile-4.png">
             <div class="info">
                 <h4>M. Gorbachev</h4>
                 <p>13B RUB</p>
