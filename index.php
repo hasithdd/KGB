@@ -137,9 +137,9 @@
             </div>
         </div>
         <div class="item">
-            <img src="res/img/home-images/profile-3.png">
+            <img src="res/img/home-images/rasputin.png">
             <div class="info">
-                <h4>V. Putin</h4>
+                <h4>G. RasPutin</h4>
                 <p>75B RUB</p>
             </div>
         </div>
