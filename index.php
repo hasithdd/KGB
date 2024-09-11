@@ -65,7 +65,7 @@
                 <img src="res/img/home-images/item-1.png">
                 <div class="info">
                     <div>
-                        <h5>Nuclear Missile</h5>
+                        <h5>TSAR - Nuclear Missile</h5>
                         <div class="btc">
                             <i class='bx bxl-bitcoin'></i>
                             <p>50M RUB</p>
