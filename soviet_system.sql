@@ -276,8 +276,8 @@ CREATE TABLE IF NOT EXISTS `users` (
     `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
     `username` varchar(255) NOT NULL,
     `password` varchar(255) NOT NULL,
-    `user_group` varchar(50) NOT NULL, -- 'admin' or 'user'
-    `user_level` int(11) NOT NULL,
+    `name` varchar(255) NOT NULL,
+    `user_level` int(11) NOT NULL DEFAULT 3,
     PRIMARY KEY (`id`),
     UNIQUE KEY `username` (`username`),
     KEY `user_level` (`user_level`),
@@ -294,3 +294,17 @@ INSERT INTO
 VALUES (1, 'Admin', 1, 1),
     (2, 'special', 2, 1),
     (3, 'User', 3, 1);
+
+INSERT INTO
+    `users` (
+        `username`,
+        `password`,
+        `name`,
+        `user_level`
+    )
+VALUES (
+        'admin',
+        '$2y$10$Q7.HH.h3Aed1RBaAJN1KBu/YGdCx8gNh4pb4uC/oDbwvpVEP8zOFu',
+        'Admin',
+        1
+    );

@@ -12,21 +12,23 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form method="post" action="./Services/Auth.php">
                 <h1>Create Account</h1>
                 <span>or use your details for registeration</span>
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <input type="text" placeholder="Name" name="name">
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <input type="hidden" name="isSignUp" value="true">
                 <button>Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form method="post" action="./Services/Auth.php">
                 <h1>Sign In</h1>
                 <span>or use your Username & Password</span>
-                <input type="text" placeholder="Username">
-                <input type="password" placeholder="Password">
+                <input type="text" placeholder="Username" name="username">
+                <input type="password" placeholder="Password" name="password">
+                <input type="hidden" name="isSignUp" value="false">
                 <button type="submit">Sign In</button>
             </form>
         </div>
@@ -47,6 +49,14 @@
     </div>
 
     <script src="js/login-page-script.js"></script>
+
+    <?php
+    session_start();
+    if (isset($_SESSION['error'])) {
+        echo "<script>alert('" . $_SESSION['error'] . "')</script>";
+        unset($_SESSION['error']);
+    }
+    ?>
 </body>
 
 </html>
