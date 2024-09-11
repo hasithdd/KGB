@@ -41,7 +41,7 @@ class DbService
 
     public function execute($sql)
     {
-        return $this->connection->execute_query($sql);
+        return $this->connection->query($sql);
     }
 
     // Close the database connection
