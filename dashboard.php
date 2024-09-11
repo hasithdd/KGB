@@ -1,3 +1,10 @@
+<?php
+include_once './Services/DbService.php';
+session_start();
+// error_reporting(E_ALL);
+// ini_set('display_errors', 1);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,14 +184,35 @@
 
                 <div class="profile">
                     <div class="info">
-                        <p>Hey, <b>Reza</b></p>
-                        <small class="text-muted">Admin</small>
+                        <p>Hey,
+                            <b><?php
+                            if (isset($_SESSION['name'])) {
+                                echo $_SESSION['name'];
+                            } else {
+                                echo 'user';
+                            }
+                            ?>
+                            </b>
+                        </p>
+                        <small class="text-muted">
+                            <?php
+                            $dbService = new Services\DbService();
+                            $result1 = $dbService->query("SELECT `user_level` FROM `users` WHERE `username` = '" . $_SESSION['username'] . "'");
+                            $group_level = $result1->fetch_assoc()['user_level'];
+                            $result2 = $dbService->query("SELECT `group_name` FROM `user_groups` WHERE `group_level` = " . $group_level);
+                            echo $result2->fetch_assoc()['group_name'];
+                            ?>
+                        </small>
                     </div>
                     <div class="profile-photo">
                         <img src="res/img/admin-images/profile-1.jpg">
                     </div>
                 </div>
             </div>
+            <button id="logout-btn" onclick="logout()"
+                style="background-color: #FF0000; color: #000000; padding: 10px 20px; border: none; cursor: pointer; border-radius: 4px;">
+                Logout
+            </button>
             <div class="user-profile">
                 <div class="logo">
                     <img src="res/img/admin-images/logo2.png">
@@ -204,6 +232,11 @@
     </div>
     <script src="js/admin-orders.js"></script>
     <script src="js/admin-index.js"></script>
+    <script>
+        function logout() {
+            window.location.href = 'logout.php';
+        }
+    </script>
 </body>
 
 </html>

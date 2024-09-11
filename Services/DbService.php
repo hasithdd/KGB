@@ -14,11 +14,10 @@ class DbService
     // Constructor to initialize the database connection details
     public function __construct()
     {
-        loadEnv();
-        $this->host = getenv('DB_HOST') ?? 'localhost';
-        $this->username = getenv('DB_USERNAME') ?? 'root';
-        $this->password = getenv('DB_PASSWORD') ?? '';
-        $this->database = getenv('DB_NAME') ?? 'kgbdb';
+        $this->host = 'localhost';
+        $this->username = 'root';
+        $this->password = '';
+        $this->database = 'kgbdb';
 
         $this->connect();
     }

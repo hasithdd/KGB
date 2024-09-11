@@ -19,17 +19,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($isSignUp !== "true") {
       $sql = "SELECT * FROM users WHERE username = '$username'";
       $result = $dbService->query($sql);
-      echo($result->num_rows);
+      echo ($result->num_rows);
 
       if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $db_pw = $row['password'];
         if (password_verify($password, $db_pw)) {
+          $_SESSION['name'] = $row['name'] ?? $username;
           $_SESSION['username'] = $username;
           header('Location: /kgb/dashboard.php');
           exit();
         } else {
-          $_SESSION['error'] = 'Invalid password for user '.$username;
+          $_SESSION['error'] = 'Invalid password for user ' . $username;
           header('Location: /kgb/login-page.php');
           exit();
         }
@@ -46,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $result = $dbService->execute($sql);
 
       if ($result === true) {
+        $_SESSION['name'] = $name;
         $_SESSION['username'] = $username;
         header('Location: /kgb/dashboard.php');
         exit();
