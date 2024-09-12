@@ -185,7 +185,7 @@ aside .sidebar a:last-child{
     width: 100%;
 }
 
-aside .sidebar a.active{
+/* aside .sidebar a.active{
     width: 100%;
     color: var(--color-primary);
     background-color: var(--color-light);
@@ -202,7 +202,7 @@ aside .sidebar a.active::before{
 aside .sidebar a.active span{
     color: var(--color-primary);
     margin-left: calc(1rem - 3px);
-}
+} */
 
 aside .sidebar a:hover{
     color: var(--color-primary);
@@ -378,6 +378,44 @@ main .recent-orders a{
     color: var(--color-primary);
 }
 
+main .user-table{
+    margin-top: 1.3rem;
+}
+
+main .user-table h2{
+    margin-bottom: 0.8rem;
+}
+
+main .user-table table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .user-table table:hover{
+    box-shadow: none;
+}
+
+main table tbody td{
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+main table tbody tr:last-child td{
+    border: none;
+}
+
+main .user-table a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
 .right-section{
     margin-top: 1.4rem;
 }

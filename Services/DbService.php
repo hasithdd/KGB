@@ -32,7 +32,10 @@ class DbService
             die("Connection failed: " . $this->connection->connect_error);
         }
     }
-
+    public function prepare($sql)
+    {
+        return $this->connection->prepare($sql);
+    }
     // Query method to run SQL queries
     public function query($sql)
     {

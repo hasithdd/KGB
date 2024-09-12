@@ -1,16 +1,6 @@
 const sideMenu = document.querySelector('aside');
-const menuBtn = document.getElementById('menu-btn');
-const closeBtn = document.getElementById('close-btn');
 
 const darkMode = document.querySelector('.dark-mode');
-
-menuBtn.addEventListener('click', () => {
-    sideMenu.style.display = 'block';
-});
-
-closeBtn.addEventListener('click', () => {
-    sideMenu.style.display = 'none';
-});
 
 darkMode.addEventListener('click', () => {
     document.body.classList.toggle('dark-mode-variables');
@@ -30,4 +20,25 @@ Orders.forEach(order => {
     `;
     tr.innerHTML = trContent;
     document.querySelector('table tbody').appendChild(tr);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelectorAll('.sidebar a');
+    const sections = document.querySelectorAll('.content-section');
+
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('data-target');
+
+            // Hide all sections
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show the clicked section
+            const targetSection = document.getElementById(targetId);
+            targetSection.classList.add('active');
+        });
+    });
 });

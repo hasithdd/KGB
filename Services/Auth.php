@@ -49,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       if ($result === true) {
         $_SESSION['name'] = $name;
         $_SESSION['username'] = $username;
-        header('Location: /kgb/dashboard.php');
+        header('Location: /kgb/login-page.php');
         exit();
       } else {
         $error = 'Failed to create account:';

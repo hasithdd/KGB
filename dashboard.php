@@ -1,6 +1,19 @@
 <?php
 include_once './Services/DbService.php';
 session_start();
+if (!isset($_SESSION['name'])) {
+    header('Location: login-page.php');
+    exit();
+}
+$dbService = new Services\DbService();
+$group_level = 0;  // Default group level
+
+if (isset($_SESSION['username'])) {
+    $result1 = $dbService->query("SELECT `user_level` FROM `users` WHERE `username` = '" . $_SESSION['username'] . "'");
+    if ($result1->num_rows > 0) {
+        $group_level = $result1->fetch_assoc()['user_level'];
+    }
+}
 // error_reporting(E_ALL);
 // ini_set('display_errors', 1);
 ?>
@@ -15,55 +28,45 @@ session_start();
     <link rel="stylesheet" href="css/admin-style.css">
     <title>Management System</title>
 </head>
-
 <body>
-
     <div class="container">
         <aside>
             <div class="toggle">
                 <div class="logo">
-                    <img src="res/img/admin-images/logo.png">
-                    <h2><span class="danger">KGB</span></h2>
-                </div>
-                <div class="close" id="close-btn">
-                    <span class="material-icons-sharp">
-                        close
-                    </span>
+                    <a href="index.php">
+                        <img src="res/img/admin-images/logo.png">
+                        <h2><span class="danger">KGB</span></h2>
+                    </a>
                 </div>
             </div>
-
             <div class="sidebar">
-                <a href="#">
+                <a href="#" data-target="dashboard" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
                     <h3>Dashboard</h3>
                 </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        person_outline
-                    </span>
-                    <h3>User Management</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        receipt_long
-                    </span>
-                    <h3>Category</h3>
-                </a>
-                <a href="#" class="active">
-                    <span class="material-icons-sharp">
-                        insights
-                    </span>
-                    <h3>Product</h3>
-                </a>
-                <a href="#">
-                    <span class="material-icons-sharp">
-                        inventory
-                    </span>
-                    <h3>Sales</h3>
-                </a>
-                <a href="#">
+                <?php if ($group_level==1):?> 
+                    <a href="#user_management" data-target="user_management">
+                        <span class="material-icons-sharp">
+                            person_outline
+                        </span>
+                        <h3>User Management</h3>
+                    </a>
+                    <a href="#product_management" data-target="product_management">
+                        <span class="material-icons-sharp">
+                            insights
+                        </span>
+                        <h3>Product</h3>
+                    </a>
+                    <a href="#sales_management" data-target="sales_management">
+                        <span class="material-icons-sharp">
+                            inventory
+                        </span>
+                        <h3>Sales</h3>
+                    </a>
+                <?php endif; ?>
+                <a href="#reports_management" data-target="reports_management">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
@@ -72,98 +75,180 @@ session_start();
             </div>
         </aside>
         <main>
-            <h1>Dashboard</h1>
-            <div class="analyse">
-                <div class="sales">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Total Sales</h3>
-                            <h1>$65,024</h1>
+            <h1>Admin Panel</h1>
+            <section id="dashboard" class="dashboard_content">
+                <div class="content-section analyse">
+                    <div class="sales">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Total Sales</h3>
+                                <h1>$Salli Na </h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+81%</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+81%</p>
+                    </div>
+                    <div class="visits">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Products</h3>
+                                <h1>Puka</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>-48%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="searches">
+                        <div class="status">
+                            <div class="info">
+                                <h3>Categories</h3>
+                                <h1>Sudui</h1>
+                            </div>
+                            <div class="progresss">
+                                <svg>
+                                    <circle cx="38" cy="38" r="36"></circle>
+                                </svg>
+                                <div class="percentage">
+                                    <p>+21%</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="visits">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Products</h3>
-                            <h1>24,981</h1>
+                <?php if ($group_level==1):?>
+                    <div class="new-users">
+                        <h2>Administrators</h2>
+                        <div class="user-list">
+                        <?php
+                        $dbService = new Services\DbService();
+                        $result3 = $dbService->query("SELECT `username` FROM `users` WHERE `user_level` = 1");
+
+                        if ($result3->num_rows > 0) {
+                            while ($row = $result3->fetch_assoc()) {
+                                ?>
+                                <div class="user">
+                                    <img src="res/img/admin-images/profile.png">
+                                    <h2><?php echo htmlspecialchars($row['username']); ?></h2>
+                                </div>
+                                <?php
+                            }
+                        } else {
+                            ?>
+                            <div class="user">
+                                <h2>No admins found.</h2>
+                            </div>
+                            <?php
+                        }
+                        ?>
                         </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>-48%</p>
+                    </div>
+                    <div class="recent-orders">
+                        <h2>Recent Orders</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Course Name</th>
+                                    <th>Course Number</th>
+                                    <th>Payment</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
+            </section>
+            <section id="user_management" class="dashboard_content">
+                <?php if ($group_level==3):?> 
+                    <div class="new-users">
+                        <?php
+                            $dbService = new Services\DbService();
+                            $result4 = $dbService->query("SELECT `user_level` FROM `users` WHERE `username` = '" . $_SESSION['username'] . "'");
+                            if ($result4 && $row4 = $result4->fetch_assoc()) {
+                                $group_level = $row4['user_level'];
+                                $result5 = $dbService->query("SELECT `group_name` FROM `user_groups` WHERE `group_level` = " . $group_level);
+                                if ($result5 && $row5 = $result5->fetch_assoc()) {
+                                    $group_name = $row5['group_name'];
+                                } else {
+                                    $group_name = "Unknown Group";
+                                }
+                            } else {
+                                $group_level = "Unknown Level";
+                                $group_name = "Unknown Group";
+                            }
+                        ?>
+                        <div class="user-list">
+                            <img src="res/img/admin-images/profile.png" alt="Profile Picture" style="width: 5rem;height: 5rem;margin-bottom: 0.4rem;border-radius: 50%;">
+                            <div class="user-info">
+                                <h2><?php echo htmlspecialchars($_SESSION['username']); ?></h2>
+                                <p>Name: <?php echo htmlspecialchars($_SESSION['name']); ?></p>
+                                <p>User Group: <?php echo htmlspecialchars($group_name); ?></p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="searches">
-                    <div class="status">
-                        <div class="info">
-                            <h3>Categories</h3>
-                            <h1>14,147</h1>
-                        </div>
-                        <div class="progresss">
-                            <svg>
-                                <circle cx="38" cy="38" r="36"></circle>
-                            </svg>
-                            <div class="percentage">
-                                <p>+21%</p>
-                            </div>
-                        </div>
+                <?php endif; ?>
+                <?php if ($group_level==1):?>
+                    <div class="user-table">
+                        <h2>User Management</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>User Name</th>
+                                <th>Group Level</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    $dbService = new Services\DbService();
+                                    $result6 = $dbService->query("SELECT id,username,user_level FROM `users`");
+                                    if ($result6->num_rows > 0) {
+                                        // Output data of each row
+                                        while($row = $result6->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row["id"] . "</td>";
+                                            echo "<td>" . $row["username"] . "</td>";
+                                            echo "<td>";
+                                            if ($row["user_level"] == 1) {
+                                                echo "admin";
+                                            } elseif ($row["user_level"] == 3) {
+                                                echo "user";
+                                            }
+                                            echo '<td><a href="user-edit.php?id=' . $row["id"] . '">Edit</a></td>';
+                                            echo '<td><a href="user-delete.php?id=' . $row["id"] . '">Delete</a></td>';
+                                            echo "</td>";
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='5'>No users found</td></tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-            </div>
-            <div class="new-users">
-                <h2>New Users</h2>
-                <div class="user-list">
-                    <div class="user">
-                        <img src="res/img/admin-images/profile-2.jpg">
-                        <h2>Jack</h2>
-                        <p>54 Min Ago</p>
-                    </div>
-                    <div class="user">
-                        <img src="res/img/admin-images/profile-3.jpg">
-                        <h2>Amir</h2>
-                        <p>3 Hours Ago</p>
-                    </div>
-                    <div class="user">
-                        <img src="res/img/admin-images/profile-4.jpg">
-                        <h2>Ember</h2>
-                        <p>6 Hours Ago</p>
-                    </div>
-                    <div class="user">
-                        <img src="res/img/admin-images/plus.png">
-                        <h2>More</h2>
-                        <p>New User</p>
-                    </div>
-                </div>
-            </div>
-            <div class="recent-orders">
-                <h2>Recent Orders</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Course Name</th>
-                            <th>Course Number</th>
-                            <th>Payment</th>
-                            <th>Status</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-                <a href="#">Show All</a>
-            </div>
+                <?php endif; ?>
+            </section>
+            <section id="product_management" class="dashboard_content">
+            </section>
+            <section id="sales_management" class="dashboard_content">
+            </section>
+            <section id="reports" class="dashboard_content">
+            </section>
         </main>
 
         <div class="right-section">
@@ -205,7 +290,7 @@ session_start();
                         </small>
                     </div>
                     <div class="profile-photo">
-                        <img src="res/img/admin-images/profile-1.jpg">
+                        <img src="res/img/admin-images/profile.png">
                     </div>
                 </div>
             </div>
