@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/homepage-style.css">
     <title>KGB Weapons Stock</title>
 </head>
-
 <body>
     <nav>
         <a href="index.php" class="logo">KGB</a>
     </nav>
-
     <header>
         <div class="left">
             <h1>Let's Buy Some <span>Missiles</span></h1>
@@ -25,11 +22,9 @@
         </div>
         <img src="res/img/home-images/header.png">
     </header>
-
     <h2 class="separator">
         Buy Weapons from USSR
     </h2>
-
     <div class="sell-nft">
         <div class="item">
             <div class="header">
@@ -53,13 +48,10 @@
             <p>Our glorious fleet sails the seas, crushing imperialist foes with unstoppable submarines and mighty warships.</p>
         </div>
     </div>
-
     <h2 class="separator">
         Super Hot Weapons
     </h2>
-
     <div class="nft-shop">
-
         <div class="nft-list">
             <div class="item">
                 <img src="res/img/home-images/item-1.png">
@@ -114,13 +106,10 @@
                 </div>
             </div>
         </div>
-
     </div>
-
     <h2 class="separator">
         Best Sellers
     </h2>
-
     <div class="sellers">
         <div class="item">
             <img src="res/img/home-images/profile-1.png">
@@ -151,14 +140,11 @@
             </div>
         </div>
     </div>
-
     <footer>
         <h3>United and mighty, our Soviet land! </h3>
         <div class="right">
             <p>Copyright © 2024 Soviet Union, All Rights Reserved.</p>
         </div>
     </footer>
-
 </body>
-
 </html>

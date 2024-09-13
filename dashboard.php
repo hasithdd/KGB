@@ -66,11 +66,17 @@ if (isset($_SESSION['username'])) {
                         <h3>Sales</h3>
                     </a>
                 <?php endif; ?>
-                <a href="report_form.php" data-target="reports_management">
+                <a href="functionalities.html" data-target="Functionalities" class="bottom-link">
                     <span class="material-icons-sharp">
-                        report_gmailerrorred
+                        functions
                     </span>
-                    <h3>Reports</h3>
+                    <h3>Functionalities</h3>
+                </a>
+                <a href="help-page.html" data-target="Help-page" class="bottom-link">
+                    <span class="material-icons-sharp">
+                        help
+                    </span>
+                    <h3>Help</h3>
                 </a>
             </div>
         </aside>
@@ -162,21 +168,6 @@ if (isset($_SESSION['username'])) {
                         }
                         ?>
                         </div>
-                    </div>
-                    <div class="recent-orders">
-                        <h2>Recent Orders</h2>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Course Name</th>
-                                    <th>Course Number</th>
-                                    <th>Payment</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
                     </div>
                 <?php endif; ?>
             </section>
@@ -426,7 +417,6 @@ if (isset($_SESSION['username'])) {
             </div>
         </div>
     </div>
-    <script src="js/admin-orders.js"></script>
     <script src="js/admin-index.js"></script>
     <script>
         function logout() {

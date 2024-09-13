@@ -179,10 +179,19 @@ aside .sidebar a span{
     transition: all 0.3s ease;
 }
 
-aside .sidebar a:last-child{
+aside .sidebar a:nth-last-child(-n+2){
     position: absolute;
     bottom: 2rem;
     width: 100%;
+}
+
+aside .sidebar .bottom-link {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+aside .sidebar .bottom-link:nth-last-child(2) {
+    bottom: 5rem; /* Adjust this value as needed to space out the links */
 }
 
 /* aside .sidebar a.active{
