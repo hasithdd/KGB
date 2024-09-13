@@ -416,6 +416,64 @@ main .user-table a{
     margin: 1rem auto;
     color: var(--color-primary);
 }
+
+main .user-table a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+main .product-table{
+    margin-top: 1.3rem;
+}
+
+main .product-table h2{
+    margin-bottom: 0.8rem;
+}
+
+main .product-table table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .product-table a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+main .sales-table{
+    margin-top: 1.3rem;
+}
+
+main .sales-table h2{
+    margin-bottom: 0.8rem;
+}
+
+main .sales-table table{
+    background-color: var(--color-white);
+    width: 100%;
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    border-radius: var(--card-border-radius);
+    transition: all 0.3s ease;
+}
+
+main .sales-table a{
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
 .right-section{
     margin-top: 1.4rem;
 }
@@ -495,6 +553,25 @@ main .user-table a{
 
 .right-section .user-profile h2{
     margin-bottom: 0.2rem;
+}
+
+.right-section .logout-btn {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #900d0d;
+    color: #FFFFFF;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-left: auto;
+}
+
+.right-section .logout-btn:hover {
+    background-color: #4f0707;
 }
 
 @media screen and (max-width: 1200px) {

@@ -40,7 +40,7 @@ if (isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="sidebar">
-                <a href="#" data-target="dashboard" class="active">
+                <a href="#dashboard" data-target="dashboard" class="active">
                     <span class="material-icons-sharp">
                         dashboard
                     </span>
@@ -66,7 +66,7 @@ if (isset($_SESSION['username'])) {
                         <h3>Sales</h3>
                     </a>
                 <?php endif; ?>
-                <a href="#reports_management" data-target="reports_management">
+                <a href="report_form.php" data-target="reports_management">
                     <span class="material-icons-sharp">
                         report_gmailerrorred
                     </span>
@@ -82,15 +82,18 @@ if (isset($_SESSION['username'])) {
                         <div class="status">
                             <div class="info">
                                 <h3>Total Sales</h3>
-                                <h1>$Salli Na </h1>
+                                <h1>
+                                    <?php
+                                        $dbService = new Services\DbService();
+                                        $result12 = $dbService->query("SELECT SUM(quantity*sale_price) as total FROM `products`");
+                                        echo $result12->fetch_assoc()['total']." M RUB";
+                                    ?>
+                                </h1>
                             </div>
                             <div class="progresss">
                                 <svg>
                                     <circle cx="38" cy="38" r="36"></circle>
                                 </svg>
-                                <div class="percentage">
-                                    <p>+81%</p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -98,15 +101,18 @@ if (isset($_SESSION['username'])) {
                         <div class="status">
                             <div class="info">
                                 <h3>Products</h3>
-                                <h1>Puka</h1>
+                                <h1>
+                                    <?php
+                                        $dbService = new Services\DbService();
+                                        $result9 = $dbService->query("SELECT COUNT(*) as count FROM `products`");
+                                        echo $result9->fetch_assoc()['count']." Products";
+                                    ?>
+                                </h1>
                             </div>
                             <div class="progresss">
                                 <svg>
                                     <circle cx="38" cy="38" r="36"></circle>
                                 </svg>
-                                <div class="percentage">
-                                    <p>-48%</p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,15 +120,18 @@ if (isset($_SESSION['username'])) {
                         <div class="status">
                             <div class="info">
                                 <h3>Categories</h3>
-                                <h1>Sudui</h1>
+                                <h1>
+                                    <?php
+                                    $dbService = new Services\DbService();
+                                    $result8 = $dbService->query("SELECT COUNT(*) as count FROM `categories`");
+                                    echo $result8->fetch_assoc()['count']." Categories";
+                                    ?>
+                                </h1>
                             </div>
                             <div class="progresss">
                                 <svg>
                                     <circle cx="38" cy="38" r="36"></circle>
                                 </svg>
-                                <div class="percentage">
-                                    <p>+21%</p>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -244,10 +253,113 @@ if (isset($_SESSION['username'])) {
                 <?php endif; ?>
             </section>
             <section id="product_management" class="dashboard_content">
+                <?php if ($group_level==1):?>
+                    <div class="product-table">
+                        <h2>Product Management</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Category</th>
+                                <th>Production Cost(M RUB)</th>
+                                <th>Sale Price(M RUB)</th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $dbService = new Services\DbService();
+                                    $result7 = $dbService->query("SELECT name,category_id,buy_price,sale_price FROM `products`");
+                                    if ($result7->num_rows > 0) {
+                                        // Output data of each row
+                                        while($row = $result7->fetch_assoc()) {
+                                            echo "<tr>";
+                                            echo "<td>" . $row["name"] . "</td>";
+                                            echo "<td>";
+                                            if ($row["category_id"] == 1) {
+                                                echo "Fighter Jets";
+                                            } elseif ($row["category_id"] == 2) {
+                                                echo "Nuclear Bombs";
+                                            }
+                                            elseif ($row["category_id"] == 3) {
+                                                echo "Balastic Missiles";
+                                            }
+                                            elseif ($row["category_id"] == 4) {
+                                                echo "Battle Tanks";
+                                            }
+                                            elseif ($row["category_id"] == 5) {
+                                                echo "Submarines";
+                                            }
+                                            elseif ($row["category_id"] == 6) {
+                                                echo "Aircraft Carriers";
+                                            }
+                                            elseif ($row["category_id"] == 7) {
+                                                echo "Helicopters";
+                                            }
+                                            elseif ($row["category_id"] == 8) {
+                                                echo "Air Defense System";
+                                            }
+                                            echo "<td>" . $row["buy_price"] . "</td>";
+                                            echo "<td>" . $row["sale_price"] . "</td>";
+                                            echo '<td><a href="product-edit.php?id=' . $row["name"] . '">Edit</a></td>';
+                                            echo '<td><a href="product-delete.php?id=' . $row["name"] . '">Delete</a></td>';
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='6'>No products found</td></tr>";
+                                    }
+                                ?>
+                                <tr>
+                                    <td colspan="6" style="text-align: center;">
+                                        <a href="product-add.php" class="add-product-button" style="font-size: 15px; padding: 10px 20px; background-color: #4CAF50; color: white; border-radius: 5px; text-decoration: none;">Add Products</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
             </section>
             <section id="sales_management" class="dashboard_content">
-            </section>
-            <section id="reports" class="dashboard_content">
+                <?php if ($group_level==1):?>
+                    <div class="sales-table">
+                        <h2>Sales Management</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Sale Price</th>
+                                <th>Total Price</th>
+                                <th>Date & Time</th>
+                                <th>Edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <?php 
+                                    $dbService = new Services\DbService();
+                                    $result10 = $dbService->query("SELECT name,quantity,sale_price,date FROM `products`");
+                                    if ($result10->num_rows > 0) {
+                                        // Output data of each row
+                                        while($row = $result10->fetch_assoc()) {
+                                            $totalPrice = $row["quantity"] * $row["sale_price"];
+                                            echo "<tr>";
+                                            echo "<td>" . $row["name"] . "</td>";
+                                            echo "<td>" . $row["quantity"] . "</td>";
+                                            echo "<td>" . $row["sale_price"] . "</td>";
+                                            echo "<td>" . $totalPrice . "</td>";
+                                            echo "<td>" . $row["date"] . "</td>";
+                                            echo '<td><a href="sale-edit.php?id=' . $row["name"] . '">Edit</a></td>';
+                                            echo "</tr>";
+                                        }
+                                    }else {
+                                        echo "<tr><td colspan='6'>No products found</td></tr>";
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php endif; ?>
             </section>
         </main>
 
@@ -294,8 +406,7 @@ if (isset($_SESSION['username'])) {
                     </div>
                 </div>
             </div>
-            <button id="logout-btn" onclick="logout()"
-                style="background-color: #FF0000; color: #000000; padding: 10px 20px; border: none; cursor: pointer; border-radius: 4px;">
+            <button id="logout-btn" class="logout-btn" onclick="logout()">
                 Logout
             </button>
             <div class="user-profile">
