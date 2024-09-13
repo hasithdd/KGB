@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 13, 2024 at 04:04 AM
+-- Generation Time: Sep 13, 2024 at 08:34 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -83,8 +83,8 @@ INSERT INTO `products` (`id`, `name`, `quantity`, `buy_price`, `sale_price`, `ca
 (14, 'MI-24', '660', 1.00, 4.00, 7, '2024-09-04 19:50:00'),
 (15, 'S-400', '960', 1.00, 1.50, 8, '2024-09-04 19:50:00'),
 (16, 'S-200', '850', 1.00, 1.30, 8, '2024-09-04 19:50:00'),
-(18, 'SU-57', NULL, 150.00, 250.00, 1, '0000-00-00 00:00:00'),
-(19, 'SU-35', NULL, 40.00, 90.00, 1, '0000-00-00 00:00:00');
+(18, 'SU-57', '15', 150.00, 250.00, 1, '2024-09-13 01:02:00'),
+(19, 'SU-35', '20', 40.00, 90.00, 1, '2024-09-13 05:05:00');
 
 -- --------------------------------------------------------
 
@@ -106,8 +106,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `password`, `name`, `user_level`) VALUES
 (1, 'admin', '$2y$10$Q7.HH.h3Aed1RBaAJN1KBu/YGdCx8gNh4pb4uC/oDbwvpVEP8zOFu', 'Admin', 1),
-(2, 'hasith', '$2y$10$WHSREWj4Ty7ja4LuytgIXeYzv/D7TuIBUNVDkeVYCGzrTjnEdytuu', 'Hasith', 1),
-(6, 'uoc', '$2y$10$vRCxKvWUCYFWSPNS7.7d6.5BWihn4EOsCB6q0C4d3K3nlxd25QJdy', 'University of Colombo', 3);
+(2, 'hasith', '$2y$10$WHSREWj4Ty7ja4LuytgIXeYzv/D7TuIBUNVDkeVYCGzrTjnEdytuu', 'Hasith', 3),
+(6, 'uoc', '$2y$10$vRCxKvWUCYFWSPNS7.7d6.5BWihn4EOsCB6q0C4d3K3nlxd25QJdy', 'University of Colombo', 1);
 
 -- --------------------------------------------------------
 
@@ -180,7 +180,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `users`
