@@ -1,0 +1,58 @@
+/* help-styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    padding: 1rem 2rem;
+}
+
+section {
+    background: #fff;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #333;
+    border-bottom: 2px solid #333;
+    padding-bottom: 0.5rem;
+}
+
+section p {
+    margin: 0.5rem 0;
+}
+
+section ol {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+}
+
+section ol li {
+    margin: 0.5rem 0;
+}
+
+code {
+    background: #eee;
+    padding: 0.2rem 0.4rem;
+    border-radius: 3px;
+}

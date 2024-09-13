@@ -66,13 +66,13 @@ if (isset($_SESSION['username'])) {
                         <h3>Sales</h3>
                     </a>
                 <?php endif; ?>
-                <a href="functionalities.html" data-target="Functionalities" class="bottom-link">
+                <a href="functionalities.html" id="Functionalities-link" class="bottom-link">
                     <span class="material-icons-sharp">
                         functions
                     </span>
                     <h3>Functionalities</h3>
                 </a>
-                <a href="help-page.html" data-target="Help-page" class="bottom-link">
+                <a href="help-page.html" id="help-link" class="bottom-link">
                     <span class="material-icons-sharp">
                         help
                     </span>

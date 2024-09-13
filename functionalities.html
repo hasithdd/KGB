@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functionalities</title>
+    <link rel="stylesheet" href="css/function-styles.css">
+</head>
+<body>
+    <header>
+        <h1>Website Functionalities</h1>
+    </header>
+    <main>
+        <section>
+            <h2>List of Functionalities</h2>
+            <ul>
+                <li>
+                    <h3>User Authentication</h3>
+                    <p>For managing user authentication in my application, I created a process that handles both sign-in and sign-up functionalities securely. 
+                        I use an Auth.php script where, based on the request type (sign-in or sign-up), the system either authenticates existing users or creates new accounts.
+                        For sign-up, the system captures user details, hashes the password using <code>password_hash()</code>, and stores them in the database.
+                        For sign-in, it verifies the entered password against the stored hash using <code>password_verify()</code>.
+                        User sessions are managed to persist login states, and appropriate redirects are handled for successful or failed login attempts.
+                        Additionally, I created .env management through <code>envServices.php</code> to handle sensitive information and environment configurations.
+                        <strong>Used Technologies:</strong> HTML, CSS, JavaScript, PHP
+                    </p>
+                </li>
+                <li>
+                    <h3>Database Connection</h3>
+                    <p>For handling the database connection in my application, I created a <code>DbService.php</code> class that manages all interactions with the database. 
+                        This service establishes a connection to the MySQL database using the <code>mysqli</code> extension. 
+                        The class initializes the connection parameters, such as the host, username, password, and database name, within its constructor and opens a connection when instantiated.
+                        To ensure smooth database operations, it includes methods like <code>query()</code> and <code>execute()</code> for running SQL commands, as well as a <code>prepare()</code> function to handle prepared statements. 
+                        If any connection issues occur, the system is designed to output an error message. Additionally, the <code>DbService</code> class ensures the database connection is properly closed when no longer needed.
+                        <strong>Used Technologies:</strong> PHP, MySQL
+                    </p>
+                </li>
+                <li>
+                    <h3>User Management</h3>
+                    <p>For user management in my application, I implemented features that allow admins to edit or delete user accounts. The system ensures that only authenticated users can access these functionalities by checking session data.
+                        The user deletion functionality involves confirming the action through a form. If the deletion is confirmed, the system deletes the user from the database using a prepared SQL statement.
+                        The user editing feature retrieves the current user information from the database, allowing admins to update the username and user level through a form. Upon submission, the updated data is stored back into the database.
+                        Both processes use prepared statements to ensure security and prevent SQL injection attacks.
+                        <strong>Used Technologies:</strong> HTML, CSS, PHP, MySQL
+                    </p>
+                </li>
+                <li>
+                    <h3>Product Management</h3>
+                    <p>In my product management system, I have implemented key functionalities for adding, editing, and deleting products. These processes ensure smooth management of product data in a secure and efficient way.
+                        Product addition involves validating input fields like product name, category, production cost, and sale price. After validation, the product is inserted into the database using a prepared statement to prevent SQL injection.
+                        Product editing allows the admin to update the product details, such as name, category, and pricing. The product data is fetched from the database, pre-filled in the form, and upon submission, the updated values are saved back to the database.
+                        Product deletion confirms the action with the user before removing the product from the database. If the action is confirmed, the product is deleted, otherwise, the user is redirected to the dashboard.
+                        All actions are protected by session validation to ensure that only authorized users can access these features.
+                        <strong>Used Technologies:</strong> HTML, CSS, PHP, MySQL
+                    </p>
+                </li>
+            </ul>
+        </section>
+    </main>
+</body>
+</html>

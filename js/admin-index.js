@@ -8,6 +8,14 @@ darkMode.addEventListener('click', () => {
     darkMode.querySelector('span:nth-child(2)').classList.toggle('active');
 })
 
+document.getElementById('functionalities-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = this.href;
+});
+document.getElementById('help-link').addEventListener('click', function(event) {
+    event.preventDefault();
+    window.location.href = this.href;
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
